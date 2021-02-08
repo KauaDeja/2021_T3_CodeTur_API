@@ -41,13 +41,13 @@ namespace CodeTur.Dominio.Handlers.Usuarios
                 usuario.AdicionarTelefone(command.Telefone);
 
             if(usuario.Invalid)
-                return new GenericCommandResult(false, "Usuário Inválido", command.Notifications);
+                return new GenericCommandResult(false, "Usuário Inválido", usuario.Notifications);
 
-
+            _usuarioRepositorio.Adicionar(usuario);
             //Enviar Email de Boas Vindas
             //Send Grid
 
-            return new GenericCommandResult(true, "Usuário Criado", "Token");
+            return new GenericCommandResult(true, "Usuário Criado", usuario);
         }
     }
 }

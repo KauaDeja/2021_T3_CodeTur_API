@@ -10,7 +10,7 @@ namespace CodeTur.Dominio.Entidades
 {
     public class Usuario : Entidade
     {
-        public Usuario(string nome, string senha, string email, EnTipoUsuario tipoUsuario)
+        public Usuario(string nome, string email, string senha, EnTipoUsuario tipoUsuario)
         {
             AddNotifications(new Contract()
                 .Requires()
@@ -18,14 +18,13 @@ namespace CodeTur.Dominio.Entidades
                 .HasMaxLen(nome, 40, "Nome", "O nome deve ter no máximo 40 caracteres")
                 .IsEmail(email, "Email", "Informe um email válido")
                 .HasMinLen(senha, 6, "Senha", "A senha deve ter pelo menos 6 caracteres")
-                .HasMaxLen(senha, 12, "Senha", "A nome deve ter no máximo 12 caracteres")
                 );
 
             if (Valid)
             {
                 Nome = nome;
-                Senha = senha;
                 Email = email;
+                Senha = senha;
                 TipoUsuario = tipoUsuario;
             }
 
@@ -33,8 +32,8 @@ namespace CodeTur.Dominio.Entidades
         }
 
         public string Nome { get; private set; }
-        public string Senha { get; private set; }
         public string Email { get; private set; }
+        public string Senha { get; private set; }
         public string Telefone { get; private set; }
         public EnTipoUsuario TipoUsuario { get; private set; }
         //public List<Comentario> Comentarios { get; set; }
@@ -56,7 +55,6 @@ namespace CodeTur.Dominio.Entidades
             AddNotifications(new Contract()
                    .Requires()
                 .HasMinLen(senha, 6, "Senha", "A senha deve ter pelo menos 6 caracteres")
-                .HasMaxLen(senha, 12, "Senha", "A nome deve ter no máximo 12 caracteres")
                     );
             if (Valid)
                 Senha = senha;

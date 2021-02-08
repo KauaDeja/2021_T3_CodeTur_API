@@ -36,7 +36,7 @@ namespace CodeTur.Api
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
 
-            services.AddDbContext<CodeTurContext>(o => o.UseSqlServer("Data Source=DESKTOP-1CB35NO;Initial Catalog=CodeTur_Tarde;Persist Security Info=True;User ID=sa;Password=sa132"));
+            services.AddDbContext<CodeTurContext>(o => o.UseSqlServer("Data Source=KAUADEJA\\SQLEXPRESS; Initial Catalog=CodeTur; user id= sa; password=sa132"));
 
             //JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -57,12 +57,13 @@ namespace CodeTur.Api
             #region Injeção Dependência Usuário
             services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddTransient<CriarContaHandle, CriarContaHandle>();
+            services.AddTransient<LogarCommandHandle, LogarCommandHandle>();
             #endregion
 
             //SWAGGER
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api CodeTur", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api CodeTur", Version = "V1" });
             });
 
         }
@@ -74,7 +75,7 @@ namespace CodeTur.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(o => o.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Code"));
+                app.UseSwaggerUI(o => o.SwaggerEndpoint("/swagger/v1/swagger.json", "Api CodeTur V1"));
             }
 
             app.UseHttpsRedirection();
@@ -83,6 +84,8 @@ namespace CodeTur.Api
 
             //Add cors
             app.UseCors(c => c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

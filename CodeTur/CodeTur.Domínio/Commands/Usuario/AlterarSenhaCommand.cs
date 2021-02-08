@@ -23,7 +23,6 @@ namespace CodeTur.Dominio.Commands.Usuario
             AddNotifications(new Contract()
                .Requires()  
                .HasMinLen(Senha, 6, "Senha", "A senha deve ter pelo menos 6 caracteres")
-               .HasMaxLen(Senha, 12, "Senha", "A nome deve ter no máximo 12 caracteres")
                .AreNotEquals(IdUsuario, Guid.Empty, "IdUsuario", "Informe um Id usuário válido")
                );
         }

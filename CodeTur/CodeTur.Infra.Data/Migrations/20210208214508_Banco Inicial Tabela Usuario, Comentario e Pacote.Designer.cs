@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodeTur.Infra.Data.Migrations
 {
     [DbContext(typeof(CodeTurContext))]
-    [Migration("20210204155342_Banco inicial")]
-    partial class Bancoinicial
+    [Migration("20210208214508_Banco Inicial Tabela Usuario, Comentario e Pacote")]
+    partial class BancoInicialTabelaUsuarioComentarioePacote
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -143,7 +143,7 @@ namespace CodeTur.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuários");
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("CodeTur.Dominio.Entidades.Comentario", b =>

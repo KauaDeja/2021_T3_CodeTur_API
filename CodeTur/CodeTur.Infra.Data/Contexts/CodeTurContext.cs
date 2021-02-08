@@ -26,7 +26,7 @@ namespace CodeTur.Infra.Data.Contexts
             modelBuilder.Ignore<Notification>();
 
             #region Mapeamento Tabela Usuários
-            modelBuilder.Entity<Usuario>().ToTable("Usuários");
+            modelBuilder.Entity<Usuario>().ToTable("Usuarios");
             modelBuilder.Entity<Usuario>().Property(x => x.Id);
 
             //Nome

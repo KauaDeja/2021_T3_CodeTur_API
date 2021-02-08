@@ -141,7 +141,7 @@ namespace CodeTur.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuários");
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("CodeTur.Dominio.Entidades.Comentario", b =>

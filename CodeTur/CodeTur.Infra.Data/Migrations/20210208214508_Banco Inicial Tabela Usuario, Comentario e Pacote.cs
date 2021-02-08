@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CodeTur.Infra.Data.Migrations
 {
-    public partial class Bancoinicial : Migration
+    public partial class BancoInicialTabelaUsuarioComentarioePacote : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,13 +25,13 @@ namespace CodeTur.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Usuários",
+                name: "Usuarios",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: false),
-                    Senha = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false),
                     Email = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: false),
+                    Senha = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false),
                     Telefone = table.Column<string>(type: "varchar(11)", maxLength: 11, nullable: true),
                     TipoUsuario = table.Column<int>(type: "int", nullable: false),
                     DataCriacao = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
@@ -39,7 +39,7 @@ namespace CodeTur.Infra.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuários", x => x.Id);
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,9 +73,9 @@ namespace CodeTur.Infra.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Comentarios_Usuários_IdUsuario",
+                        name: "FK_Comentarios_Usuarios_IdUsuario",
                         column: x => x.IdUsuario,
-                        principalTable: "Usuários",
+                        principalTable: "Usuarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -105,7 +105,7 @@ namespace CodeTur.Infra.Data.Migrations
                 name: "Pacotes");
 
             migrationBuilder.DropTable(
-                name: "Usuários");
+                name: "Usuarios");
         }
     }
 }
