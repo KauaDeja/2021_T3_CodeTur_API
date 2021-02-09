@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CodeTur.Dominio.Handlers
 {
-    public class CriarComentarioHandlers : IHandler<CriarComentárioCommand>
+    public class CriarComentarioHandlers : IHandlerCommand<CriarComentárioCommand>
     {
         private readonly IComentarioRepositorio _comentarioRepositorio;
 

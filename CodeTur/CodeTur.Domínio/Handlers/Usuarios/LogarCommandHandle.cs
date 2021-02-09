@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CodeTur.Dominio.Handlers.Usuarios
 {
-    public class LogarCommandHandle : IHandler<LogarCommand>
+    public class LogarCommandHandle : IHandlerCommand<LogarCommand>
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
 

@@ -1,3 +1,4 @@
+using CodeTur.Dominio.Handlers.Pacotes;
 using CodeTur.Dominio.Handlers.Usuarios;
 using CodeTur.Dominio.Repositorios;
 using CodeTur.Infra.Data.Contexts;
@@ -58,6 +59,12 @@ namespace CodeTur.Api
             services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddTransient<CriarContaHandle, CriarContaHandle>();
             services.AddTransient<LogarCommandHandle, LogarCommandHandle>();
+            #endregion
+
+            #region Injeção Dependência Pacotes
+            services.AddTransient<IPacoteRepositorio, PacoteRepositorio>();
+            services.AddTransient<CriarPacoteCommandHandle, CriarPacoteCommandHandle>();
+            services.AddTransient<ListarPacoteQueryHandle, ListarPacoteQueryHandle>();
             #endregion
 
             //SWAGGER

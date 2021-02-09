@@ -15,7 +15,7 @@ namespace CodeTur.Dominio.Commands.Pacote
 
         }
 
-        public CriarPacoteCommand( string titulo, string descricao, string imagem, bool ativo)
+        public CriarPacoteCommand(string titulo, string descricao, string imagem, bool ativo)
         {
             Titulo = titulo;
             Descricao = descricao;
@@ -23,24 +23,21 @@ namespace CodeTur.Dominio.Commands.Pacote
             Ativo = ativo;
         }
 
-        public string Titulo { get; private set; }
-        public string Descricao { get; private set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
         public string Imagem { get; set; }
         public bool Ativo { get; set; }
 
         public void Validar()
         {
             AddNotifications(new Contract()
-               .Requires()
-               .IsNotNullOrEmpty(Titulo, "Titulo", "Informe o titulo do pacote")
-               .IsNotNullOrEmpty(Descricao, "Descricao", "Informe a descrição do pacote")
-               .IsNotNullOrEmpty(Imagem, "Imagem", "Informe a Imagem do pacote")
-               );
+                .Requires()
+                .IsNotNullOrEmpty(Titulo, "Titulo", "Informe o Título do pacote")
+                .IsNotNullOrEmpty(Descricao, "Descricao", "Informe o Descrição do pacote")
+                .IsNotNullOrEmpty(Imagem, "Imagem", "Informe o Imagem do pacote")
+            );
         }
 
-        public CriarPacoteCommand Handle(CriarPacoteCommand command)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

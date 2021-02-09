@@ -10,7 +10,7 @@ namespace CodeTur.Comum.Handlers
     // Handler: IHandler<Classe> se Classe : ICommand
     // Definindo que  ao herdar o IHandler
 
-    public interface IHandler <T> where T: ICommand
+    public interface IHandlerCommand <T> where T: ICommand
     {
         // Para que retorne uma resposta
         ICommandResult Handle(T command);

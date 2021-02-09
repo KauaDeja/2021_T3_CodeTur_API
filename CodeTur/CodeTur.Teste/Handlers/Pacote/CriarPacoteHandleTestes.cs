@@ -20,7 +20,7 @@ namespace CodeTur.Testes.Handlers.Pacote
             // Criar um Handle
             // Criar um Fake Repositorie
             // Ou podemos usar o mock
-            var handle = new CriarPacoteHandle(new FakePacoteRepositorio());
+            var handle = new CriarPacoteCommandHandle(new FakePacoteRepositorio());
 
             // Pega o resultado
             var resultado = (GenericCommandResult)handle.Handle(command);
@@ -37,7 +37,7 @@ namespace CodeTur.Testes.Handlers.Pacote
             var command = new CriarPacoteCommand("Viagem para Austrália", "País Exótico", "png.1", true);
 
             //Criar um handle        
-            var handle = new CriarPacoteHandle(new FakePacoteRepositorio());
+            var handle = new CriarPacoteCommandHandle(new FakePacoteRepositorio());
 
             //Pega o resultado
             var resultado = (GenericCommandResult)handle.Handle(command);

@@ -10,7 +10,7 @@ using System.Text;
 
 namespace CodeTur.Dominio.Handlers.Usuarios
 {
-    public class CriarContaHandle : IHandler<CriarContaCommand>
+    public class CriarContaHandle : IHandlerCommand<CriarContaCommand>
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         public CriarContaHandle(IUsuarioRepositorio usuarioRepositorio)
@@ -47,7 +47,7 @@ namespace CodeTur.Dominio.Handlers.Usuarios
             //Enviar Email de Boas Vindas
             //Send Grid
 
-            return new GenericCommandResult(true, "Usuário Criado", usuario);
+            return new GenericCommandResult(true, "Usuário Criado", null);
         }
     }
 }

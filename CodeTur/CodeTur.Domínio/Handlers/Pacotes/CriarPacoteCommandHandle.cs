@@ -6,41 +6,41 @@ using CodeTur.Dominio.Repositorios;
 
 namespace CodeTur.Dominio.Handlers.Pacotes
 {
-    public class CriarPacoteHandle : IHandler<CriarPacoteCommand>
+    public class CriarPacoteCommandHandle : IHandlerCommand<CriarPacoteCommand>
     {
         private readonly IPacoteRepositorio _pacoteRepositorio;
 
-        public CriarPacoteHandle(IPacoteRepositorio pacoteRepositorio)
+        public CriarPacoteCommandHandle(IPacoteRepositorio pacoteRepositorio)
         {
             _pacoteRepositorio = pacoteRepositorio;
         }
 
-
         public ICommandResult Handle(CriarPacoteCommand command)
         {
-            // Validar Command
+            //Validar dados
             command.Validar();
 
             if (command.Invalid)
-                return new GenericCommandResult(false, "Dados do pacote inválidos", command.Notifications);
+                return new GenericCommandResult(true, "Dados inválidos", command.Notifications);
 
-            // Verificar se existe alum pacote igual cadastrado
-            var pacoteExiste = _pacoteRepositorio.BuscarPorPacote(command.Titulo);
+            //Verifica se existe pacote com o mesmo titulo
+            var pacoteexiste = _pacoteRepositorio.BuscarPorTitulo(command.Titulo);
 
-            if (pacoteExiste != null)
-                return new GenericCommandResult(true, "Pacote já cadastrado", null);
+            if (pacoteexiste != null)
+                return new GenericCommandResult(true, "Titulo do pacote já cadastrado", null);
 
-            // Salvar pacote
+            //Gerar instancia do Pacote
             var pacote = new Pacote(command.Titulo, command.Descricao, command.Imagem, command.Ativo);
 
             if (pacote.Invalid)
-                return new GenericCommandResult(false, "Pacote Inválido", command.Notifications);
+                return new GenericCommandResult(true, "Dados inválidos", pacote.Notifications);
 
-            // Slavr pacote no banco
+            //Adicionar pacote
             _pacoteRepositorio.Adicionar(pacote);
 
-            // Mensagem sucesso
+            //Retornar sucesso
             return new GenericCommandResult(true, "Pacote criado", pacote);
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace CodeTur.Dominio.Repositorios
     {
         void Adicionar(Pacote pacote);
         void Alterar(Pacote pacote);
-        Pacote BuscarPorPacote(string titulo);
+        Pacote BuscarPorTitulo(string titulo);
         Pacote BuscarPorId(Guid id);
         IEnumerable<Pacote> Listar(bool? ativo = null);
     }
